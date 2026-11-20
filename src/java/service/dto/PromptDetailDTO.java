@@ -4,8 +4,11 @@
  */
 package service.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import model.entities.Prompt;
+import model.entities.Tool;
 
 /**
  *
@@ -23,6 +26,23 @@ public class PromptDetailDTO {
     private List<ToolDTO> tools;
 
     public PromptDetailDTO() {
+    }
+    
+    public PromptDetailDTO(Prompt p){
+        this.id = p.getId();
+        this.title = p.getTitle();
+        this.description = p.getDescription();
+        this.template = p.getTemplate();
+        this.creationDate = p.getCreationDate();
+        this.isPrivate = p.isIsPrivate();
+        this.author = (p.getAuthor() != null) ? p.getAuthor().getUsername() : null;
+        this.tags = (p.getTags() != null) ? new ArrayList<>(p.getTags()) : new ArrayList<>();
+        this.tools = new ArrayList<>();
+        if (p.getTools() != null) {
+            for (Tool t : p.getTools()) {
+                this.tools.add(new ToolDTO(t));
+            }
+        }
     }
 
     public Long getId() {

@@ -5,6 +5,7 @@
 package service.dto;
 
 import java.util.Date;
+import model.entities.Prompt;
 
 /**
  *
@@ -18,6 +19,13 @@ public class PromptSummaryDTO {
     private Date creationDate;
     
     public PromptSummaryDTO() {
+    }
+    
+    public PromptSummaryDTO(Prompt p){
+        this.id = p.getId();
+        this.title = p.getTitle();
+        this.creationDate = p.getCreationDate();
+        this.author = (p.getAuthor() != null) ? p.getAuthor().getUsername() : null;
     }
 
     public Long getId() {

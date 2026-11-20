@@ -115,6 +115,14 @@ public class Tool implements Serializable {
         this.id = id;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

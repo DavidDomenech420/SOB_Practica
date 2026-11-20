@@ -5,6 +5,7 @@
 package service.dto;
 
 import java.util.Date;
+import model.entities.Tool;
 
 /**
  *
@@ -22,6 +23,17 @@ public class ToolDTO {
 
     public ToolDTO() {
     }
+    
+    public ToolDTO(Tool t) {
+    this.id = t.getId();
+    this.name = t.getName();
+    this.language = t.getLanguage();
+    this.code = t.getCode();
+    this.version = t.getVersion();
+    this.creationDate = t.getCreationDate();
+    this.isPrivate = t.isIsPrivate();
+    this.author = (t.getAuthor() != null) ? t.getAuthor().getUsername() : null;
+}
 
     public Long getId() {
         return id;
